@@ -2,6 +2,13 @@
 pipeline {
     agent any 
     stages {
+        stage('Install dependencies') { 
+            steps {
+                dir("ui"){
+                    sh 'npm install'
+                }
+            }
+        }
         stage('Test') { 
             steps {
                 sh 'echo Test'
@@ -9,7 +16,9 @@ pipeline {
         }
         stage('Production-Build') { 
             steps {
-                 sh 'echo Production-Build'
+                dir("ui"){
+                    sh 'npm run build'
+                }
             }
         }
     }
