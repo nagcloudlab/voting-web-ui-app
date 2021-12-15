@@ -6,11 +6,8 @@ pipeline {
         registryCredential = 'dockerhub' 
         dockerImage = '' 
     }
-
     stages {
-
         // CI
-
         stage('Install dependencies') { 
             steps {
                 dir("ui"){
